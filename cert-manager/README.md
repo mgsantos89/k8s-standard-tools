@@ -110,8 +110,8 @@ kubectl describe certificate example-com -n default
 cert-manager/
 ├── README.md          # Este arquivo
 ├── issuer.yaml        # Exemplo de ClusterIssuer
-├── certificate.yaml   # Exemplo de configuração de certificado
-└── install.sh         # Script opcional para instalação automatizada
+└── certificate.yaml   # Exemplo de configuração de certificado
+
 ```
 
 ---
