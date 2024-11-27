@@ -11,10 +11,19 @@ O Nginx Ingress Controller é uma ferramenta essencial para gerenciar entradas H
 
 2. Instale o Ingress Controller:
    ```bash
+   ## Cria um LoadBalancer Interno
    helm upgrade --install ingress-nginx ingress-nginx \ 
              --repo https://kubernetes.github.io/ingress-nginx \ 
              --namespace ingress-nginx \
-             --create-namespac
+             --create-namespace
+             
+   ## Cria um LoadBalancer Internet-Facing
+   helm upgrade --install ingress-nginx ingress-nginx \
+            --repo https://kubernetes.github.io/ingress-nginx \
+            --namespace ingress-nginx \
+            --create-namespace \
+            --set controller.service.externalTrafficPolicy=Cluster \
+            --set controller.service.annotations."service\.beta\.kubernetes\.io/aws-load-balancer-internal"="false"  # Para AWS, para desabilitar o LoadBalancer interno
    ```
 
 3. Verifique a instalação:
@@ -33,3 +42,5 @@ nginx-ingress-controller/
 
 - [Documentação Oficial](https://kubernetes.github.io/ingress-nginx/)
 - [Repositório GitHub](https://github.com/kubernetes/ingress-nginx)
+
+
